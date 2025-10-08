@@ -126,7 +126,7 @@ export default function NetflixClone() {
             <div className="flex-1 p-6 lg:p-8">
               {/* Hero Section */}
               <div className="relative rounded-3xl overflow-hidden mb-8 h-80 lg:h-96">
-                <Image src="/images/witcher-hero.png" alt="The Witcher" fill className="object-cover" priority />
+                <Image src="/images/witcher-hero.jpg" alt="The Witcher" fill className="object-cover" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="flex items-center gap-2 text-white text-sm mb-2">
@@ -199,7 +199,7 @@ export default function NetflixClone() {
                     </div>
                     <div className="p-3">
                       <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
-                      <p className="text-xs text-gray-500">Don't make me grow up</p>
+                      <p className="text-xs text-gray-500">Dont make me grow up</p>
                     </div>
                   </div>
 
