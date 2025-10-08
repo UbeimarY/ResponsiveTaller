@@ -1,17 +1,34 @@
-// If you have a Button component, update the path below to the correct location, for example:
-// import { Button } from "../components/ui/button"
-const Button = (props: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
-  <button
-    {...props}
-    className={`px-4 py-2 rounded bg-red-600 hover:bg-red-700 text-white font-semibold ${props.className ?? ""}`}
-  >
-    {props.children}
-  </button>
-)
+"use client"
+
+import type React from "react"
+
 import { Home, Bookmark, Clock, Users, PartyPopper, Settings, LogOut, Search, Bell, Mail, Plus } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 
 export default function NetflixClone() {
+  const [profileImages, setProfileImages] = useState<string[]>([
+    "from-green-400 to-emerald-500",
+    "from-purple-400 to-pink-500",
+    "from-blue-400 to-cyan-500",
+    "from-gray-700 to-gray-900",
+    "from-orange-400 to-red-500",
+    "from-indigo-400 to-purple-500",
+    "from-pink-400 to-rose-500",
+    "from-gray-800 to-black",
+  ])
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setProfileImages([reader.result as string, ...profileImages])
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Left Sidebar */}
@@ -109,7 +126,7 @@ export default function NetflixClone() {
             <div className="flex-1 p-6 lg:p-8">
               {/* Hero Section */}
               <div className="relative rounded-3xl overflow-hidden mb-8 h-80 lg:h-96">
-                <Image src="/images/witcher-hero.jpg" alt="The Witcher" fill className="object-cover" priority />
+                <Image src="/images/witcher-hero.png" alt="The Witcher" fill className="object-cover" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-8">
                   <div className="flex items-center gap-2 text-white text-sm mb-2">
@@ -119,7 +136,9 @@ export default function NetflixClone() {
                   <h2 className="text-4xl lg:text-5xl font-bold text-white mb-2">The Witcher</h2>
                   <p className="text-white/90 text-sm mb-4">Fantasy • Magic • 2 seasons</p>
                   <div className="flex items-center gap-3">
-                    <Button className="bg-red-600 hover:bg-red-700 text-white px-6">Watch</Button>
+                    <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md transition-colors">
+  Watch
+</button>
                     <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30">
                       <Plus className="w-5 h-5" />
                     </button>
@@ -138,77 +157,65 @@ export default function NetflixClone() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {/* Party Card 1 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 mb-2"></div>
-                    <p className="text-sm font-semibold text-gray-900">Cadaver</p>
-                    <p className="text-xs text-gray-500">Thriller • Suspense</p>
-                  </div>
-
-                  {/* Party Card 2 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mb-2">
-                      <div className="flex -space-x-2">
-                        <div className="w-6 h-6 rounded-full bg-blue-400 border-2 border-white"></div>
-                        <div className="w-6 h-6 rounded-full bg-pink-400 border-2 border-white"></div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {/* Party Card 1 - Cadaver */}
+                  <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div className="relative aspect-square bg-gradient-to-br from-gray-700 to-gray-900">
+                      <div className="absolute bottom-2 left-2 flex -space-x-2">
+                        <div className="w-8 h-8 rounded-full bg-blue-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-pink-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-green-400 border-2 border-white"></div>
                       </div>
                     </div>
-                    <p className="text-sm font-semibold text-gray-900">Bladerunner 2049</p>
-                    <p className="text-xs text-gray-500">Sci-fi • Magic</p>
+                    <div className="p-3">
+                      <p className="text-sm font-semibold text-gray-900">Cadaver</p>
+                      <p className="text-xs text-gray-500">Watched yesterday</p>
+                    </div>
                   </div>
 
-                  {/* Party Card 3 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-yellow-500 mb-2"></div>
-                    <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
-                    <p className="text-xs text-gray-500">Dont make me laugh</p>
-                  </div>
-
-                  {/* Party Card 4 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mb-2">
-                      <div className="flex -space-x-2">
-                        <div className="w-5 h-5 rounded-full bg-purple-400 border-2 border-white"></div>
-                        <div className="w-5 h-5 rounded-full bg-green-400 border-2 border-white"></div>
-                        <div className="w-5 h-5 rounded-full bg-blue-400 border-2 border-white"></div>
+                  {/* Party Card 2 - Bladerunner 2049 */}
+                  <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div className="relative aspect-square bg-gradient-to-br from-orange-500 to-yellow-600">
+                      <div className="absolute bottom-2 left-2 flex -space-x-2">
+                        <div className="w-8 h-8 rounded-full bg-purple-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-cyan-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-rose-400 border-2 border-white"></div>
                       </div>
                     </div>
-                    <p className="text-sm font-semibold text-gray-900">Friends</p>
-                    <p className="text-xs text-gray-500">We were on a break!</p>
+                    <div className="p-3">
+                      <p className="text-sm font-semibold text-gray-900">Bladerunner 2049</p>
+                      <p className="text-xs text-gray-500">Sci-fi binge</p>
+                    </div>
                   </div>
 
-                  {/* Party Card 5 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 mb-2"></div>
-                    <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
-                    <p className="text-xs text-gray-500">Dont make me laugh</p>
-                  </div>
-
-                  {/* Party Card 6 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mb-2">
-                      <div className="flex -space-x-2">
-                        <div className="w-5 h-5 rounded-full bg-red-400 border-2 border-white"></div>
-                        <div className="w-5 h-5 rounded-full bg-yellow-400 border-2 border-white"></div>
-                        <div className="w-5 h-5 rounded-full bg-green-400 border-2 border-white"></div>
+                  {/* Party Card 3 - Monsters Inc */}
+                  <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div className="relative aspect-square bg-gradient-to-br from-cyan-400 to-blue-500">
+                      <div className="absolute bottom-2 left-2 flex -space-x-2">
+                        <div className="w-8 h-8 rounded-full bg-yellow-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-green-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-blue-400 border-2 border-white"></div>
                       </div>
                     </div>
-                    <p className="text-sm font-semibold text-gray-900">Friends</p>
-                    <p className="text-xs text-gray-500">We sorry for break!</p>
+                    <div className="p-3">
+                      <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
+                      <p className="text-xs text-gray-500">Don't make me grow up</p>
+                    </div>
                   </div>
 
-                  {/* Party Card 7 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mb-2">
-                      <div className="flex -space-x-2">
-                        <div className="w-5 h-5 rounded-full bg-orange-400 border-2 border-white"></div>
-                        <div className="w-5 h-5 rounded-full bg-pink-400 border-2 border-white"></div>
-                        <div className="w-5 h-5 rounded-full bg-purple-400 border-2 border-white"></div>
+                  {/* Party Card 4 - Friends */}
+                  <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div className="relative aspect-square bg-gradient-to-br from-purple-400 to-pink-500">
+                      <div className="absolute bottom-2 left-2 flex -space-x-2">
+                        <div className="w-8 h-8 rounded-full bg-orange-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-red-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full bg-indigo-400 border-2 border-white"></div>
                       </div>
                     </div>
-                    <p className="text-sm font-semibold text-gray-900">Friends</p>
-                    <p className="text-xs text-gray-500">We sorry for break!</p>
+                    <div className="p-3">
+                      <p className="text-sm font-semibold text-gray-900">Friends</p>
+                      <p className="text-xs text-gray-500">We were on a break!</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -249,7 +256,12 @@ export default function NetflixClone() {
                   {/* Show Card 4 */}
                   <div className="flex flex-col">
                     <div className="relative rounded-xl overflow-hidden mb-2 aspect-video bg-gray-200">
-                      <Image src="/stranger-things-kids-group.jpg" alt="Stranger Things" fill className="object-cover" />
+                      <Image
+                        src="/stranger-things-kids-group.jpg"
+                        alt="Stranger Things"
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <p className="text-sm font-semibold text-gray-900">Stranger Things</p>
                   </div>
@@ -259,18 +271,36 @@ export default function NetflixClone() {
 
             {/* Right Sidebar - User Avatars */}
             <aside className="hidden xl:flex xl:flex-col w-20 bg-white border-l border-gray-200 p-4 gap-4">
-              <button className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white hover:bg-red-600">
+              <label
+                htmlFor="profile-upload"
+                className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white hover:bg-red-600 cursor-pointer"
+              >
                 <Plus className="w-5 h-5" />
-              </button>
+                <input
+                  id="profile-upload"
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleImageUpload}
+                />
+              </label>
 
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-pink-500"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-700 to-gray-900"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-rose-500"></div>
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-black"></div>
+              {profileImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`w-12 h-12 rounded-full ${
+                    image.startsWith("data:") ? "" : `bg-gradient-to-br ${image}`
+                  } overflow-hidden`}
+                >
+                  {image.startsWith("data:") && (
+                    <img
+                      src={image || "/placeholder.svg"}
+                      alt={`Profile ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                </div>
+              ))}
             </aside>
           </div>
         </div>
