@@ -162,7 +162,7 @@ export default function NetflixClone() {
                   <div className="flex flex-col items-center">
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-yellow-500 mb-2"></div>
                     <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
-                    <p className="text-xs text-gray-500">Don't make me laugh</p>
+                    <p className="text-xs text-gray-500">Dont make me laugh</p>
                   </div>
 
                   {/* Party Card 4 */}
@@ -182,7 +182,7 @@ export default function NetflixClone() {
                   <div className="flex flex-col items-center">
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 mb-2"></div>
                     <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
-                    <p className="text-xs text-gray-500">Don't make me laugh</p>
+                    <p className="text-xs text-gray-500">Dont make me laugh</p>
                   </div>
 
                   {/* Party Card 6 */}
