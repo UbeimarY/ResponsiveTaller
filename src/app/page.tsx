@@ -8,14 +8,12 @@ import { useState } from "react"
 
 export default function NetflixClone() {
   const [profileImages, setProfileImages] = useState<string[]>([
-    "from-green-400 to-emerald-500",
-    "from-purple-400 to-pink-500",
-    "from-blue-400 to-cyan-500",
-    "from-gray-700 to-gray-900",
-    "from-orange-400 to-red-500",
-    "from-indigo-400 to-purple-500",
-    "from-pink-400 to-rose-500",
-    "from-gray-800 to-black",
+    "/avatars/user1.jpg",
+    "/avatars/user2.jpg",
+    "/avatars/user3.jpg",
+    "/avatars/user4.jpg",
+    "/avatars/user5.jpg",
+    "/avatars/user6.jpg",
   ])
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -110,7 +108,9 @@ export default function NetflixClone() {
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500"></div>
+              <div className="w-10 h-10 rounded-full overflow-hidden">
+                <Image src="/avatars/user1.jpg" alt="Ramone F." width={40} height={40} className="object-cover" />
+              </div>
               <div className="hidden md:block">
                 <p className="text-sm font-semibold text-gray-900">Ramone F.</p>
                 <p className="text-xs text-gray-500">User ID</p>
@@ -136,9 +136,7 @@ export default function NetflixClone() {
                   <h2 className="text-4xl lg:text-5xl font-bold text-white mb-2">The Witcher</h2>
                   <p className="text-white/90 text-sm mb-4">Fantasy • Magic • 2 seasons</p>
                   <div className="flex items-center gap-3">
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md transition-colors">
-  Watch
-</button>
+                    <Button className="bg-red-600 hover:bg-red-700 text-white px-6">Watch</Button>
                     <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/30">
                       <Plus className="w-5 h-5" />
                     </button>
@@ -160,11 +158,36 @@ export default function NetflixClone() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                   {/* Party Card 1 - Cadaver */}
                   <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div className="relative aspect-square bg-gradient-to-br from-gray-700 to-gray-900">
+                    <div className="relative aspect-square bg-white">
+                      <Image src="/parties/cadaver-poster.jpg" alt="Cadaver" fill className="object-cover" />
                       <div className="absolute bottom-2 left-2 flex -space-x-2">
-                        <div className="w-8 h-8 rounded-full bg-blue-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-pink-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-green-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user1.jpg"
+                            alt="User 1"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user2.jpg"
+                            alt="User 2"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user3.jpg"
+                            alt="User 3"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="p-3">
@@ -175,11 +198,41 @@ export default function NetflixClone() {
 
                   {/* Party Card 2 - Bladerunner 2049 */}
                   <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div className="relative aspect-square bg-gradient-to-br from-orange-500 to-yellow-600">
+                    <div className="relative aspect-square bg-white">
+                      <Image
+                        src="/parties/bladerunner-poster.jpg"
+                        alt="Bladerunner 2049"
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute bottom-2 left-2 flex -space-x-2">
-                        <div className="w-8 h-8 rounded-full bg-purple-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-cyan-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-rose-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user4.jpg"
+                            alt="User 4"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user5.jpg"
+                            alt="User 5"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user6.jpg"
+                            alt="User 6"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="p-3">
@@ -190,26 +243,76 @@ export default function NetflixClone() {
 
                   {/* Party Card 3 - Monsters Inc */}
                   <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div className="relative aspect-square bg-gradient-to-br from-cyan-400 to-blue-500">
+                    <div className="relative aspect-square bg-white">
+                      <Image src="/parties/monsters-inc-poster.jpg" alt="Monsters Inc" fill className="object-cover" />
                       <div className="absolute bottom-2 left-2 flex -space-x-2">
-                        <div className="w-8 h-8 rounded-full bg-yellow-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-green-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-blue-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user1.jpg"
+                            alt="User 1"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user3.jpg"
+                            alt="User 3"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user5.jpg"
+                            alt="User 5"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="p-3">
                       <p className="text-sm font-semibold text-gray-900">Monsters Inc.</p>
-                      <p className="text-xs text-gray-500">Dont make me grow up</p>
+                      <p className="text-xs text-gray-500">Don't make me grow up</p>
                     </div>
                   </div>
 
                   {/* Party Card 4 - Friends */}
                   <div className="flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <div className="relative aspect-square bg-gradient-to-br from-purple-400 to-pink-500">
+                    <div className="relative aspect-square bg-white">
+                      <Image src="/parties/friends-poster.jpg" alt="Friends" fill className="object-cover" />
                       <div className="absolute bottom-2 left-2 flex -space-x-2">
-                        <div className="w-8 h-8 rounded-full bg-orange-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-red-400 border-2 border-white"></div>
-                        <div className="w-8 h-8 rounded-full bg-indigo-400 border-2 border-white"></div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user2.jpg"
+                            alt="User 2"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user4.jpg"
+                            alt="User 4"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
+                          <Image
+                            src="/avatars/user6.jpg"
+                            alt="User 6"
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
+                        </div>
                       </div>
                     </div>
                     <div className="p-3">
@@ -286,19 +389,12 @@ export default function NetflixClone() {
               </label>
 
               {profileImages.map((image, index) => (
-                <div
-                  key={index}
-                  className={`w-12 h-12 rounded-full ${
-                    image.startsWith("data:") ? "" : `bg-gradient-to-br ${image}`
-                  } overflow-hidden`}
-                >
-                  {image.startsWith("data:") && (
-                    <img
-                      src={image || "/placeholder.svg"}
-                      alt={`Profile ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  )}
+                <div key={index} className="w-12 h-12 rounded-full overflow-hidden bg-gray-200">
+                  <img
+                    src={image || "/placeholder.svg"}
+                    alt={`Profile ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               ))}
             </aside>
