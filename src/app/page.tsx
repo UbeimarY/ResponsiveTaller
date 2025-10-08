@@ -297,7 +297,7 @@ export default function NetflixClone() {
                         </div>
                         <div className="w-8 h-8 rounded-full border-2 border-white overflow-hidden">
                           <Image
-                            src="/avatars/user4.jpg"
+                            src="/public/avatars/user4.jpg"
                             alt="User 4"
                             width={32}
                             height={32}
